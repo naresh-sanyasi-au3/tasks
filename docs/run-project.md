@@ -1,6 +1,6 @@
 # to run project
 
-1=> git clone <>
+1=> git clone https://github.com/naresh-sanyasi-au3/ccep-technical-exercise.git
 3=> npm install
 4=> create  .env file and add below environment variable
 PORT=4000

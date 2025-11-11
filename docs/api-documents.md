@@ -6,9 +6,9 @@
 ![alt text](diagram-arch.png)
 
 # Base URL
-http://localhost:4000/api/tasks
+**http://localhost:4000/tasks**
 
- Endpoints
+ **Endpoints**
 Method || Endpoint || Description
 POST || "/" || create new task
 GET || "/" || get all task
@@ -17,7 +17,7 @@ DELETE || "/:id" || delete a task
 
 1. # Create Task
 
-POST /api/tasks
+**POST /tasks**
 
 Request Body
 {
@@ -33,12 +33,10 @@ status || string || no || Enum: "Pending", "In Progress", "Completed" // default
 
 Response (201 Created)
 {
-  "_id": "690ffe1cb258585cae1e89ab",
+  "id": "690ffe1cb258585cae1e89ab",
   "name": "Design Homepage",
   "description": "Create UI mockup for homepage",
   "status": "In Progress",
-  "createdAt": "2025-11-09T10:25:32.489Z",
-  "updatedAt": "2025-11-09T10:25:32.489Z"
 }
 
  Error Response (400)
@@ -48,18 +46,18 @@ Response (201 Created)
 
 2. # Get All Tasks
 
-GET /api/tasks
+**GET /tasks**
 
  Response (200 OK)
 [
   {
-    "_id": "690ffe1cb258585cae1e89ab",
+    "id": "690ffe1cb258585cae1e89ab",
     "name": "Design Homepage",
     "description": "Create UI mockup for homepage",
     "status": "In Progress"
   },
   {
-    "_id": "673a45fbc21fa91f23859a15",
+    "id": "673a45fbc21fa91f23859a15",
     "name": "Backend API",
     "description": "Develop REST APIs for tasks",
     "status": "Pending"
@@ -68,10 +66,10 @@ GET /api/tasks
 
 3. # Update Task
 
-PUT /api/tasks/:id
+**PUT /tasks/:id**
 
 Request
-PUT /api/tasks/690ffe1cb258585cae1e89ab
+PUT /tasks/690ffe1cb258585cae1e89ab
 
  Request Body
 {
@@ -87,11 +85,10 @@ status || string || no || "Pending", "In Progress", "Completed"
 
 Response (200 OK)
 {
-  "_id": "690ffe1cb258585cae1e89ab",
+  "id": "690ffe1cb258585cae1e89ab",
   "name": ""make a coffee,
   "description": "make a coffee without sugar",
   "status": "Completed",
-  "updatedAt": "2025-11-09T11:00:10.123Z"
 }
 
 Error Response (404)
@@ -101,14 +98,14 @@ Error Response (404)
 
  4. # Delete Task
 
-DELETE /api/tasks/:id
+**DELETE /tasks/:id**
 
- Example Request
-DELETE /api/tasks/690ffe1cb258585cae1e89ab
+ Request
+DELETE /tasks/690ffe1cb258585cae1e89ab
 
  Response (200 OK)
 {
-  "message": "Task deleted successfully"
+  "message": "Task Deleted Successfully"
 }
 
 Error Response (404)
@@ -134,8 +131,8 @@ Error Response (404)
 }
 
  # Validation Rules
-Field	Rule
-name	Required
-description	Required
-status	Optional but must be one of "Pending", "In Progress", "Completed"
-id (in URL)	Must be valid MongoDB ObjectId
+Field	|| Rule
+name	|| Required
+description	|| Required
+status	|| Optional but must be one of "Pending", "In Progress", "Completed"
+id (in URL) || Must be valid MongoDB ObjectId
