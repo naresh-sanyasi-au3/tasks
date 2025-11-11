@@ -45,10 +45,13 @@ Request Body
 Response (201 Created)
 ```json
 {
-  "id": "690ffe1cb258585cae1e89ab",
-  "name": "Design Homepage",
-  "description": "Create UI mockup for homepage",
-  "status": "In Progress",
+    "message": "Task Created Succesfully",
+    "data": {
+        "id": "6913229d559b9ca95f25ca9a",
+        "name": "palying cricket",
+        "description": "play cricket with team",
+        "status": "Pending"
+    }
 }
 ```
 
@@ -65,20 +68,23 @@ Response (201 Created)
 
  Response (200 OK)
  ```json
-[
-  {
-    "id": "690ffe1cb258585cae1e89ab",
-    "name": "Design Homepage",
-    "description": "Create UI mockup for homepage",
-    "status": "In Progress"
-  },
-  {
-    "id": "673a45fbc21fa91f23859a15",
-    "name": "Backend API",
-    "description": "Develop REST APIs for tasks",
-    "status": "Pending"
-  }
-]
+{
+    "message": "Task Fetched Succesfully",
+    "data": [
+        {
+           "id": "69129f349ad2d70cac089b89",
+            "name": "palying cricket",
+            "description": "play cricket with team",
+            "status": "Pending"
+        },
+        {
+            "id": "6912bb81a214c7e9c4e54fa9",
+            "name": "palying football",
+            "description": "play football at MG Garden",
+            "status": "Pending"
+        }
+    ]
+}
 ```
 
  ## Update Task
@@ -97,18 +103,23 @@ PUT /tasks/690ffe1cb258585cae1e89ab
 }
 ```
 
-Field || Type || Required || Description
-name  || string || yes || Updated name
-description || string || yes || Updated details
-status || string || no || "Pending", "In Progress", "Completed"
+| **Field** | **Type** | **Required** | **Description** |
+|-----------|----------|--------------|-----------------|
+| `name` | string | Yes | Updated name |
+| `description` | string | Yes | Updated details |
+| `status` | string | No | One of `"Pending"`, `"In Progress"`, `"Completed"` |
+
 
 Response (200 OK)
 ```json
 {
-  "id": "690ffe1cb258585cae1e89ab",
-  "name": "make a coffee",
-  "description": "make a coffee without sugar",
-  "status": "Completed",
+    "message": "Task Updated Succesfully",
+    "data": {
+        "id": "6913229d559b9ca95f25ca9a",
+        "name": "palying tennis",
+        "description": "play cricket with team",
+        "status": "Completed"
+    }
 }
 ```
 
@@ -157,8 +168,9 @@ Error Response (404)
 
 | **Field** | **Rule** |
 |------------|-----------|
+| `id` (in URL) | Must be a valid MongoDB ObjectId |
 | `name` | Required |
 | `description` | Required |
 | `status` | Optional, but must be one of `"Pending"`, `"In Progress"`, or `"Completed"` |
-| `id` (in URL) | Must be a valid MongoDB ObjectId |
+
  
