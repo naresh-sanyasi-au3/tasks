@@ -2,16 +2,16 @@
 
 ##  Setup Instructions
 
-1. **Clone the repository**
+1. **Clone the Repository**
 ```bash
    git clone https://github.com/naresh-sanyasi-au3/ccep-technical-exercise.git
 ```
-2. **project directory**
+2. **Go to Project Directory**
 
 ```bash
 cd ccep-technical-exercise
 ```
-3. **Install dependencies**
+3. **Install Dependencies**
 
 ```bash
    npm install
@@ -23,7 +23,7 @@ PORT=4000
 MONGO_URI=mongodburl
 ```
 
-5. **Start the application**
+5. **Start the Application**
 ```bash
 npm start 
 or
@@ -39,7 +39,7 @@ npm run dev
 ```
 
 
-## The design choices you made
+## The Design Choices You Made
 
 Routes → Controller → Service → Model → Database 
 single responsiblity

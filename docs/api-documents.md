@@ -139,15 +139,15 @@ Error Response (404)
 }
 ```
 
- ## Models
+ ## Collections
 
- ### Task Model
+ ### Task 
 
   - **name: String**
   - **description: String**
 
 
- ### TaskStatus Model
+ ### TaskStatus 
 
   - **taskId: ObjectId, // taskid**
   - **status: String** ***enum: ["Pending", "In Progress", "Completed"]*** ***default: "Pending"***
