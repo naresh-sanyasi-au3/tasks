@@ -41,8 +41,8 @@ npm run dev
 
 ## The Design Choices You Made
 
-Routes → Controller → Service → Model → Database 
-single responsiblity
+- Routes → Controller → Service → Model → Database 
+- Single Responsiblity
 
 
 ## Summary of Design Choices
