@@ -1,54 +1,70 @@
 # API Documentation
 
+The **Tasks API** is a simple microservice that allows users to create, retrieve, update, and delete tasks.  
+It follows RESTful design principles and supports task status tracking with validation and structured responses.
 
-# Architectural Diagram
+
+## Architectural Diagram
 
 ![alt text](diagram-arch.png)
 
-# Base URL
+
+ ## Endpoints**
+
+ ### Base URL
 **http://localhost:4000/tasks**
 
- **Endpoints**
-Method || Endpoint || Description
-POST || "/" || create new task
-GET || "/" || get all task
-PUT || "/:id" || update a task
-DELETE || "/:id" || delete a task
+| Method | Endpoint | Description       |
+|--------|-----------|------------------|
+| `POST` | `/`       | Create new task  |
+| `GET`  | `/`       | Get all tasks    |
+| `PUT`  | `/:id`    | Update a task    |
+| `DELETE` | `/:id`  | Delete a task    |
 
-1. # Create Task
 
-**POST /tasks**
+## Create Task
+### POST /tasks 
 
 Request Body
+
+```json
 {
   "name": "create a log",
   "description": "create a log for node js api",
   "status": "In Progress"
 }
+```
 
-Field || Type || Required || Description
-name  || string || yes || Updated name
-description || string || yes || Updated details
-status || string || no || Enum: "Pending", "In Progress", "Completed" // default: "Pending"
+| **Field** | **Type** | **Required** | **Description** |
+|------------|-----------|---------------|-----------------|
+| `name` | string | Yes | Updated name |
+| `description` | string | Yes | Updated details |
+| `status` | string | No | Enum: `"Pending"`, `"In Progress"`, `"Completed"` <br>_Default_: `"Pending"` |
+
 
 Response (201 Created)
+```json
 {
   "id": "690ffe1cb258585cae1e89ab",
   "name": "Design Homepage",
   "description": "Create UI mockup for homepage",
   "status": "In Progress",
 }
+```
 
  Error Response (400)
+ ```json
 {
   "message": "Name is required"
 }
+```
 
-2. # Get All Tasks
+ ## Get All Tasks
 
-**GET /tasks**
+### GET /tasks
 
  Response (200 OK)
+ ```json
 [
   {
     "id": "690ffe1cb258585cae1e89ab",
@@ -63,20 +79,23 @@ Response (201 Created)
     "status": "Pending"
   }
 ]
+```
 
-3. # Update Task
+ ## Update Task
 
-**PUT /tasks/:id**
+### PUT /tasks/:id 
 
 Request
 PUT /tasks/690ffe1cb258585cae1e89ab
 
  Request Body
+ ```json
 {
   "name": "make tea",
   "description": "Make tea without sugar",
   "status": "Completed"
 }
+```
 
 Field || Type || Required || Description
 name  || string || yes || Updated name
@@ -84,55 +103,62 @@ description || string || yes || Updated details
 status || string || no || "Pending", "In Progress", "Completed"
 
 Response (200 OK)
+```json
 {
   "id": "690ffe1cb258585cae1e89ab",
-  "name": ""make a coffee,
+  "name": "make a coffee",
   "description": "make a coffee without sugar",
   "status": "Completed",
 }
+```
 
 Error Response (404)
+```json
 {
   "message": "Task not found"
 }
+```
+  ## Delete Task
 
- 4. # Delete Task
-
-**DELETE /tasks/:id**
+### DELETE /tasks/:id
 
  Request
 DELETE /tasks/690ffe1cb258585cae1e89ab
 
  Response (200 OK)
+ ```json
 {
   "message": "Task Deleted Successfully"
 }
+```
 
 Error Response (404)
+```json
 {
   "message": "Task not found"
 }
+```
 
- # Models
- **Task Model**
-{
-  name: String,
-  description: String,
-}
+ ## Models
 
- **TaskStatus Model**
-{
-  taskId: ObjectId, // taskid
-  status: {
-    type: String,
-    enum: ["Pending", "In Progress", "Completed"],
-    default: "Pending"
-  }
-}
+ ### Task Model
 
- # Validation Rules
-Field	|| Rule
-name	|| Required
-description	|| Required
-status	|| Optional but must be one of "Pending", "In Progress", "Completed"
-id (in URL) || Must be valid MongoDB ObjectId
+  - **name: String**
+  - **description: String**
+
+
+ ### TaskStatus Model
+
+  - **taskId: ObjectId, // taskid**
+  - **status: String** ***enum: ["Pending", "In Progress", "Completed"]*** ***default: "Pending"***
+   
+
+ ## Validation Rules
+
+| **Field** | **Rule** |
+|------------|-----------|
+| `name` | Required |
+| `description` | Required |
+| `status` | Optional, but must be one of `"Pending"`, `"In Progress"`, or `"Completed"` |
+| `id` (in URL) | Must be a valid MongoDB ObjectId |
+ 

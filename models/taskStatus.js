@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const taskStatusSchema = new mongoose.Schema(
   {
     taskId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, // task-id
       ref: "task",
     },
     status: {

@@ -1,5 +1,5 @@
 import * as taskService from "../services/taskService.js";
-
+// create a task
 export const createTask = async (req, res, next) => {
   try {
     const task = await taskService.createTask(req.body);
@@ -10,7 +10,7 @@ export const createTask = async (req, res, next) => {
       description: task.description,
       status: task.status,
     };
-    let resp = { data: filteredTask, message: "Task Created Succesfully" };
+    let resp = {message: "Task Created Succesfully", data: filteredTask};
     res.status(201).json(resp);
   } catch (error) {
     error.statusCode = 400;
@@ -18,17 +18,18 @@ export const createTask = async (req, res, next) => {
   }
 };
 
+// get all task
 export const getAllTasks = async (req, res, next) => {
   try {
     const tasks = await taskService.getAllTasks();
-    let resp = { data: tasks, message: "Task Fetched Succesfully" };
+    let resp = {message: "Task Fetched Succesfully", data: tasks};
     res.status(200).json(resp);
   } catch (error) {
     error.statusCode = 400;
     next(error);
   }
 };
-
+// update a task
 export const updateTask = async (req, res, next) => {
   try {
     const task = await taskService.updateTask(req.params.id, req.body);
@@ -41,7 +42,7 @@ export const updateTask = async (req, res, next) => {
       description: task.description,
       status: task.status,
     };
-    let resp = { data: filteredTask, message: "Task Updated Succesfully" };
+    let resp = {message: "Task Updated Succesfully" , data: filteredTask};
     res.status(200).json(resp);
     
   } catch (error) {
@@ -50,6 +51,7 @@ export const updateTask = async (req, res, next) => {
   }
 };
 
+// delete a task
 export const deleteTask = async (req, res, next) => {
   try {
     const task = await taskService.deleteTask(req.params.id);
