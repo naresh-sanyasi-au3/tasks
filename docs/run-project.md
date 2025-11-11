@@ -1,4 +1,4 @@
-=========to run project==========
+# to run project
 
 1=> git clone <>
 3=> npm install
@@ -7,18 +7,18 @@ PORT=4000
 MONGO_URI=mongodburl
 5=> npm start /npm run dev
 
-=========to run test cases==========
+# to run test cases
 
 1=> npm run test
 
 
-==========The design choices you made==========
+# The design choices you made
 
 Routes → Controller → Service → Model → Database 
 single responsiblity
 
 
-==========Summary of Design Choices==========
+# Summary of Design Choices
 
 Architecture ==>	Layered / Modular ==> Clean separation, easier maintenance
 Database ==>	MongoDB	==> Flexible schema
@@ -29,7 +29,7 @@ Error Handling	==> Centralized middleware	Consistent error output
 Future Scalability	==> Microservice-ready	==> Easy horizontal scaling
 
 
- ==========How your service adheres to MACH principles.==========
+# How your service adheres to MACH principles
 
 This service follows MACH principles by being modular (microservice-ready),
  API-first with RESTful JSON APIs, cloud-native using Node.js and MongoDB 

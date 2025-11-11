@@ -41,16 +41,17 @@ export const getAllTasks = async () => {
       },
       {
         $project: {
+          id: "$_id",
           name: 1,
           description: 1,
           status: "$statusInfo.status",
+          _id: 0,
         },
       },
     ]);
-    // console.log({tasksWithStatus}, "-----nnnnn48")
+
     return tasksWithStatus;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -77,7 +78,6 @@ export const updateTask = async (id, taskData) => {
         await updatedStatus.save();
       }
     }
-    console.log({ updatedStatus });
     let taskResp = updatedStatus
       ? {
           ...updatedTask?.toObject(),

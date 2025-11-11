@@ -1,11 +1,11 @@
-==========================API Documentation==========================
+# API Documentation
 
 
-=============Architectural Diagram=============
-https://drive.google.com/file/d/1K3tjzUmphTlMNwrpNaLl9dU0KpzIsuCD/view
+# Architectural Diagram
 
+![alt text](diagram-arch.png)
 
-Base URL
+# Base URL
 http://localhost:4000/api/tasks
 
  Endpoints
@@ -15,7 +15,7 @@ GET || "/" || get all task
 PUT || "/:id" || update a task
 DELETE || "/:id" || delete a task
 
-1. =============Create Task=============
+1. # Create Task
 
 POST /api/tasks
 
@@ -46,7 +46,7 @@ Response (201 Created)
   "message": "Name is required"
 }
 
-2. =============Get All Tasks=============
+2. # Get All Tasks
 
 GET /api/tasks
 
@@ -66,7 +66,7 @@ GET /api/tasks
   }
 ]
 
-3. =============Update Task=============
+3. # Update Task
 
 PUT /api/tasks/:id
 
@@ -99,7 +99,7 @@ Error Response (404)
   "message": "Task not found"
 }
 
- 4. =============Delete Task=============
+ 4. # Delete Task
 
 DELETE /api/tasks/:id
 
@@ -116,14 +116,14 @@ Error Response (404)
   "message": "Task not found"
 }
 
- =============Models=============
- Task Model
+ # Models
+ **Task Model**
 {
   name: String,
   description: String,
 }
 
- TaskStatus Model
+ **TaskStatus Model**
 {
   taskId: ObjectId, // taskid
   status: {
@@ -133,7 +133,7 @@ Error Response (404)
   }
 }
 
- =============Validation Rules=============
+ # Validation Rules
 Field	Rule
 name	Required
 description	Required
