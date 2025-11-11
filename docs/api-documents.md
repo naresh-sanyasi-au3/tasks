@@ -147,7 +147,7 @@ Error Response (404)
   - **description: String**
 
 
- ### TaskStatus 
+ ### Taskstatus 
 
   - **taskId: ObjectId, // taskid**
   - **status: String** ***enum: ["Pending", "In Progress", "Completed"]*** ***default: "Pending"***
